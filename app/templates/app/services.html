@@ -1,0 +1,359 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PNT Academy</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/logo-removebg.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <script src="{% static 'assets/jquery/jquery-3.6.3.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <script>
+    $(document).ready(function(){
+      $("#myModal").modal('show');
+    });
+  </script>
+
+  <!-- =======================================================
+  * Template Name: Rapid - v4.9.1
+  * Template URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center header" style="z-index:99;">
+        <div class="container d-flex align-items-center">
+
+        <!-- <h1 class="logo me-auto"><a href="index.html">Rapid</a></h1> -->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="{% url 'index' %}" class="logo me-auto"><img src="{% static 'assets/img/logo-removebg.png' %}" alt="" class="img-fluid" style="width:150px"></a>
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+            <li><a class="nav-link scrollto" href="{% url 'index' %}">Home</a></li>
+            <li><a class="nav-link scrollto" href="#about">Java DSA</a></li>
+            <li><a class="nav-link scrollto" href="#services">Web Development</a></li>
+            <li><a class="nav-link scrollto " href="#portfolio">Python Development</a></li>
+            <li><a class="nav-link scrollto" href="#team">Crash Courses</a></li>
+            <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                <li><a href="#">Drop Down 1</a></li>
+                <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                    <ul>
+                    <li><a href="#">Deep Drop Down 1</a></li>
+                    <li><a href="#">Deep Drop Down 2</a></li>
+                    <li><a href="#">Deep Drop Down 3</a></li>
+                    <li><a href="#">Deep Drop Down 4</a></li>
+                    <li><a href="#">Deep Drop Down 5</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Drop Down 2</a></li>
+                <li><a href="#">Drop Down 3</a></li>
+                <li><a href="#">Drop Down 4</a></li>
+                </ul>
+            </li> -->
+            <li><a class="nav-link scrollto" href="#footer">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+        <!-- <div class="social-links">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.facebook.com/buildmyproject/" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/build-my-project-72b8991b2/?originalSubdomain=in" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.instagram.com/buildmyproject/?hl=en" class="instagram"><i class="bi bi-instagram"></i></a>
+        </div> -->
+
+        </div>
+    </header><!-- End Header -->
+
+    
+
+    <!-- ======= Call To Action Section ======= -->
+    <section id="call-to-action-services" class="call-to-action">
+        <div class="container" data-aos="zoom-out">
+          <div class="row">
+            <div class="text-center text-lg-start">
+              <h3 class="cta-title">Placement Courses</h3>
+              {% comment %} <p class="cta-text">  Attend our free placement mentorship session with our Industrial Experts tap on Registration Button.</p> {% endcomment %}
+            </div>
+          </div>
+  
+        </div>
+      </section><!--  End Call To Action Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+        <div class="container" data-aos="fade-up">
+          <div class="row">
+  
+            <div class="col-lg-4 col-md-6">
+              <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+                <img src="{% static 'assets/img/java-dsa-1.png' %}" alt="" style="border: 5px solid #1bb1dc;">
+                {% comment %} <img src="{% static 'assets/img/java-dsa-2.png' %}" alt="" style="border: 5px solid #555;"> {% endcomment %}
+              </div>
+            </div>
+  
+            <div class="col-lg-8 col-md-6">
+              <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+                <h2>Java DSA Placement course</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card course-card">
+                            <div class="card-header course-card-header">
+                                <h4>What will you learn in this Course?</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul style="padding-left:1em; margin-left:1em;">
+                                <li><i class="bi bi-arrow-right"></i>Basics of Java Language</li>
+                                <li><i class="bi bi-arrow-right"></i>Complete Data Structures & Algorithms</li>
+                                <li><i class="bi bi-arrow-right"></i>Complete Guidance on Resume Preparation</li>
+                                <li><i class="bi bi-arrow-right"></i>Complete Mentorship Sessions on Interview Preparation</li>
+                                <li><i class="bi bi-arrow-right"></i>100's of Coding Questions on All Important Topics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card course-card">
+                            <div class="card-header course-card-header">
+                                <h4>What will you get after completing this Course?</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul style="padding-left:1em; margin-left:1em;">
+                                <li><i class="bi bi-arrow-right"></i>Certification of Completion</li>
+                                <li><i class="bi bi-arrow-right"></i>Letter Of Recommendation</li>
+                                <li><i class="bi bi-arrow-right"></i>Complete Placement Assistance</li>
+                                <li><i class="bi bi-arrow-right"></i>Live Project Internship in PNT Robotics and Solution</li>
+                                {% comment %} <li><i class="bi bi-arrow-right"></i>100's of Coding Questions on All Important Topics</li> {% endcomment %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <a data-bs-toggle="modal" data-bs-target="#syllabusModal" class="btn-get-started scrollto">Syllabus</a>
+                </div>
+                
+                {% comment %} <h3>BuildMyProjects is an educational startup that was founded in 2015. We provide courses on robotics to school kids.
+                  We have successfully conducted various workshops on robotics, Python, and latest technologies. </h3>
+                <p>The company is a result of the passion for knowledge and learning. It was started in 2015 with an aim to provide online courses on Robotics and other technologies to school & college students .</p>
+                <p>In 2016, we launched CodeSchool Series for School and College students. This series is designed to enhance the knowledge of latest technologies related to robotics to School kids and provide free mentorships on placement guidance to college students.
+  
+                  We are proud to announce our recent launch of CodeSchool Series 2, which has been designed specifically for college students and provides them with real-world experience through practical assignments that includes coding challenges and projects.</p> {% endcomment %}
+                <!-- <ul>
+                  <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo</li>
+                  <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                </ul> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Syllabus Modal -->
+        <div class="modal fade" id="syllabusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <div class="pop-up-text text-center">
+                    <h1 class="modal-title fs-3">Java DSA Placement Course Syllabus</h1>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <img src="{% static 'assets/img/java-dsa-syllabus.png' %}" style="width: 765px;">
+                </div>
+            </div>
+            </div>
+        </div>
+  
+      </section><!-- End About Section -->
+  
+
+    <!-- ======= Footer ======= -->
+  <footer id="footer" class="section-bg">
+    <div class="footer-top">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+
+              <div class="col-sm-6">
+
+                <div class="footer-info">
+                  <!-- <h3>BUILDMYPROJECTS</h3> -->
+                  <a href="{% url 'index' %}" class="logo me-auto"><img src="{% static 'assets/img/logo-removebg.png' %}" alt="" class="img-fluid"></a>
+                  <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p> -->
+                </div>
+
+                <!-- <div class="footer-newsletter">
+                  <h4>Our Newsletter</h4>
+                  <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem.</p>
+                  <form action="" method="post">
+                    <input type="email" name="email"><input type="submit" value="Subscribe">
+                  </form>
+                </div> -->
+
+              </div>
+
+              <div class="col-sm-6">
+                <!-- <div class="footer-links">
+                  <h4>Useful Links</h4>
+                  <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Terms of service</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                  </ul>
+                </div> -->
+
+                <div class="footer-links">
+                  <h4>Contact Us</h4>
+                  <p>
+                    Infinity Business Park,<br>
+                    NEAR K V Pendharkar College,<br>
+                    MIDC, Dombivli, Maharashtra 421203 <br>
+                    <strong>Phone:</strong> +91 7977543839<br>
+                    <strong>Email:</strong> contact@bmpcourses.com<br>
+                  </p>
+                </div>
+
+                <div class="social-links">
+                  <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                  <a href="https://www.facebook.com/buildmyproject/" class="facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/buildmyproject/?hl=en" class="instagram"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/build-my-project-72b8991b2/?originalSubdomain=in" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="form">
+
+              <h4>Feel Free to Reach Us.</h4>
+              <p>Send us your query regarding workshops, online/offline courses.</p>
+
+              <form action="{% url 'contact_form' %}" method="POST" role="form" class="php-email-form">
+                {% csrf_token %}
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group mt-3">
+                  <textarea class="form-control" name="message" rows="5" id="message" placeholder="Message" required></textarea>
+                </div>
+                <br>
+                <div class="form-group mt-3">
+                  <button type="submit" title="Send Message" onclick="submit()">Send Message</button>
+                </div>
+
+                
+
+                {% comment %} <div class="my-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                      {{ message }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                  {% endif %} 
+                </div> {% endcomment %}
+
+                {% comment %} <div class="text-center"> {% endcomment %}
+                  {% comment %} <button type="submit" title="Send Message">Send Message</button> {% endcomment %}
+                {% comment %} </div> {% endcomment %}
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong>BUILDMYPROJECTS</strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Rapid
+        -->
+          Designed by <a href="/">Omkar Ugale</a>
+        </div>
+      </div>
+    </footer><!-- End  Footer -->
+  
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  
+    <script>
+      function submit() {
+        console.log("submitted");
+      }
+    </script>
+
+</body>
+
+</html>

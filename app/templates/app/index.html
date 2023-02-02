@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>BUILDMYPROJECT</title>
+  <title>PNT Academy</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -26,6 +26,15 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <script src="{% static 'assets/jquery/jquery-3.6.3.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <script>
+    $(document).ready(function(){
+      $("#myModal").modal('show');
+    });
+  </script>
 
   <!-- =======================================================
   * Template Name: Rapid - v4.9.1
@@ -84,19 +93,76 @@
     </div>
   </header><!-- End Header -->
 
+  <!-- registration pop-up modal-->
+  <div id="myModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+              <div class="pop-up-text text-center">
+                <h1 class="modal-title">Register</h2>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                  <div class="mb-3 px-5 input-group">
+                    <span class="input-group-text" id="basic-addon1"><img src="{% static 'assets/vendor/icons/person-fill.svg' %}"></span>
+                    <input type="text" class="form-control" id="name" name="Name" placeholder="Name" required>
+                  </div>
+                  <div class="mb-3 px-5 input-group">
+                    <span class="input-group-text" id="basic-addon1"><img src="{% static 'assets/vendor/icons/envelope-fill.svg' %}"></i></span>
+                    <input type="email" class="form-control" id="email" name="Email" placeholder="Email" required>
+                  </div>
+                  <div class="mb-3 px-5 input-group">
+                    <span class="input-group-text" id="basic-addon1"><img src="{% static 'assets/vendor/icons/telephone-fill.svg' %}"></i></span>
+                    <input type="text" class="form-control" id="contact" name="Contact" placeholder="Mobile Number" required>
+                  </div>
+                  <div class="mb-3 px-5 input-group">
+                    <span class="input-group-text" id="basic-addon1"><img src="{% static 'assets/vendor/icons/building-fill.svg' %}"></i></span>
+                    <input type="text" class="form-control" id="college" name="College" placeholder="College Name" required>
+                  </div>
+                  <div class="mb-3 px-5 input-group">
+                    <span class="input-group-text" id="basic-addon1"><img src="{% static 'assets/vendor/icons/calendar-date-fill.svg' %}"></i></span>
+                    <input type="number" class="form-control" id="courseYear" name="CourseYear" placeholder="Course Year" required>
+                  </div>
+                  <div class="mb-3 px-5 input-group">
+                    <span class="input-group-text" id="basic-addon1"><img src="{% static 'assets/vendor/icons/filter-square-fill.svg' %}"></i></span>
+                    <select name="Course" id="course" class="form-control" required>
+                      <option selected="False" style="display: none">Select Course </option> 
+                      <option value="PythonAiML">Python AI ML</option>
+                      <option value="WebDev">Web Development</option>
+                      <option value="RoboticsAuto">Robotics Automation</option>
+                    </select>
+                  </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-lg btn-block" 
+                    style="background: #1bb1dc; padding: 10px 32px; border-radius: 4px; color: #fff;" 
+                    data-bs-dismiss="modal">Register Now
+                  </button>
+                </div>
+              </form>
+            </div>
+            {% comment %} <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> {% endcomment %}
+        </div>
+    </div>
+  </div>
+
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="clearfix">
     <div class="container d-flex h-100">
       <div class="row justify-content-center align-self-center" data-aos="fade-up">
         <div class="col-lg-6 intro-info order-lg-first order-last" data-aos="zoom-in" data-aos-delay="100">
           {% if messages %}
-                  {% for message in messages %}
-                  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-                  {% endfor %}
-                {% endif %} 
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+          {% endif %} 
           <h2>CODESCHOOL<br>for School and College Students <span></span></h2>
           <div>
             <a href="#about" class="btn-get-started scrollto">Get Started</a>
@@ -135,7 +201,7 @@
                 <li><i class="bi bi-check-circle"></i>Our aim is to provide online courses on Robotics and other technologies to school & college students</li>
                 <li><i class="bi bi-check-circle"></i>Launched CodeSchool Series for School & College students in 2016</li>
               </ul>
-              {% comment %} <h3>BuildMyProjects is an educational startup that was founded in 2015. We provide courses on robotics to school kids.
+              {% comment %} <h3>PNT Academy is an educational startup that was founded in 2015. We provide courses on robotics to school kids.
                 We have successfully conducted various workshops on robotics, Python, and latest technologies. </h3>
               <p>The company is a result of the passion for knowledge and learning. It was started in 2015 with an aim to provide online courses on Robotics and other technologies to school & college students .</p>
               <p>In 2016, we launched CodeSchool Series for School and College students. This series is designed to enhance the knowledge of latest technologies related to robotics to School kids and provide free mentorships on placement guidance to college students.
@@ -159,7 +225,9 @@
 
         <header class="section-header">
           <h3>Services</h3>
-          <p>CODESCHOOL launching various courses on Robotics and Programming Languages for Placement Preparation.</p>
+          <p>CODESCHOOL launching various courses on Robotics and Programming Languages for Placement Preparation.
+              For more information on our services - <a href="{% url 'services' %}">Click here</a>
+          </p>
         </header>
 
         <div class="row g-5">
@@ -168,14 +236,14 @@
             <div class="box">
               <div class="icon" style="background: #fceef3;"><i class="bi bi-briefcase" style="color: #ff689b;"></i></div>
               <h4 class="title"><a href="">Workshops</a></h4>
-              <p class="description">BuildMyProjects Provides Workshops to Various Schools and College on Robotics and Other Latest Technologies.</p>
+              <p class="description">PNT Academy Provides Workshops to Various Schools and College on Robotics and Other Latest Technologies.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="box">
               <div class="icon" style="background: #fff0da;"><i class="bi bi-card-checklist" style="color: #e98e06;"></i></div>
               <h4 class="title"><a href="">School Courses</a></h4>
-              <p class="description">BuildMyProjects provides Basics courses by Launching CODESCHOOL Programs to School Studnets to enhance their skills and learning. </p>
+              <p class="description">PNT Academy provides Basics courses by Launching CODESCHOOL Programs to School Studnets to enhance their skills and learning. </p>
             </div>
           </div>
 
@@ -183,14 +251,14 @@
             <div class="box">
               <div class="icon" style="background: #e6fdfc;"><i class="bi bi-bar-chart" style="color: #3fcdc7;"></i></div>
               <h4 class="title"><a href="">Placement Courses</a></h4>
-              <p class="description">BuildMyProjects Launched CODESCHOOL Training Programs for College Students to Mentor them for Preparing OnCampus/OffCampus Placements</p>
+              <p class="description">PNT Academy Launched CODESCHOOL Training Programs for College Students to Mentor them for Preparing OnCampus/OffCampus Placements</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4 wow" data-aos="zoom-in" data-aos-delay="100">
             <div class="box">
               <div class="icon" style="background: #eafde7;"><i class="bi bi-binoculars" style="color:#41cf2e;"></i></div>
               <h4 class="title"><a href="">Live Projects Sessions</a></h4>
-              <p class="description">BuildMyProjects Provide Project guidance to all ages of students,by mentoring them from start to end with complete Project.</p>
+              <p class="description">PNT Academy Provide Project guidance to all ages of students,by mentoring them from start to end with complete Project.</p>
             </div>
           </div>
 
@@ -198,7 +266,7 @@
         <div class="box">
             <div class="icon" style="background: #e1eeff;"><i class="bi bi-brightness-high" style="color: #2282ff;"></i></div>
             <h4 class="title"><a href="">School Robotics Curriculum</a></h4>
-            <p class="description">BuildMyProjects Provides Curriculum Plans for Robtics Courses in Various Institutes/School of INDIA.</p>
+            <p class="description">PNT Academy Provides Curriculum Plans for Robtics Courses in Various Institutes/School of INDIA.</p>
           </div>
         </div>
 
@@ -206,7 +274,7 @@
           <div class="box">
             <div class="icon" style="background: #ecebff;"><i class="bi bi-calendar4-week" style="color: #8660fe;"></i></div>
             <h4 class="title"><a href="">Robotics Project Kits</a></h4>
-            <p class="description">BuildMyProjects also provides various Robotics Kits to School and College Students</p>
+            <p class="description">PNT Academy also provides various Robotics Kits to School and College Students</p>
           </div>
         </div>
 
@@ -461,7 +529,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="{% static 'assets/img/img13.jpeg' %}" class="img-fluid" alt="">
+              <img src="{% static 'assets/img/img13.jpg' %}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4><a href="portfolio-details.html">Robotics Batches </a></h4>
                 <!-- <p>Card</p> -->
@@ -887,7 +955,7 @@
               <div class="col-sm-6">
 
                 <div class="footer-info">
-                  <!-- <h3>BUILDMYPROJECTS</h3> -->
+                  <!-- <h3>PNT Academy</h3> -->
                   <a href="{% url 'index' %}" class="logo me-auto"><img src="{% static 'assets/img/logo-removebg.png' %}" alt="" class="img-fluid"></a>
                   <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p> -->
                 </div>
@@ -996,7 +1064,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>BUILDMYPROJECTS</strong>. All Rights Reserved
+        &copy; Copyright <strong>PNT Academy</strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--
@@ -1005,7 +1073,7 @@
         Licensing information: https://bootstrapmade.com/license/
         Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Rapid
       -->
-        Designed by <a href="/">Omkar Ugale</a>
+        Designed by <a href="#">Omkar Ugale</a> & <a href="#">Drishti Samvedi</a>
       </div>
     </div>
   </footer><!-- End  Footer -->
@@ -1029,6 +1097,27 @@
       console.log("submitted");
     }
   </script>
+
+  {% comment %} <script>
+    (() => {
+      'use strict'
+    
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('.needs-validation')
+    
+      // Loop over them and prevent submission
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+    
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+  </script> {% endcomment %}
 
 </body>
 

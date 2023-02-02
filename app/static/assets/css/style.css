@@ -448,6 +448,45 @@ h6 {
   }
 }
 
+.pop-up-text {
+  width: 100%;
+  padding: 70px 0px 50px 0px;
+  position: relative;
+}
+
+.text-center {
+  text-align: center!important;
+}
+
+.modal-header {
+  background-image: url('../img/register-modal.jpg');
+  height: 115px;
+  color: #fff;
+}
+
+.btn-get-started {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 32px;
+  border-radius: 4px;
+  transition: 0.5s;
+  color: #fff;
+  background: #1bb1dc;
+  color: #fff;
+}
+
+.btn-get-started:hover {
+  background: #0a98c0;
+}
+
+.card .card-header:hover {
+  background: #0a98c0;
+}
+
 #hero .intro-info .btn-get-started,
 #hero .intro-info .btn-services {
   font-family: "Montserrat", sans-serif;
@@ -740,6 +779,63 @@ section {
 }
 
 #call-to-action .cta-btn:hover {
+  background: #1bb1dc;
+  border: 3px solid #1bb1dc;
+}
+
+/* Service page card */
+
+.course-card {
+  border-color:#1bb1dc;
+}
+
+.course-card-header {
+  background:#1bb1dc;
+  border-color:#1bb1dc;
+  color:#fff;
+}
+
+/* Call to Action Services Page */
+
+#call-to-action-services {
+  background: #2d2b46;
+  background-size: cover;
+  padding: 100px 0 0 0;
+}
+
+#call-to-action-services .cta-title {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+#call-to-action-services .cta-text {
+  color: #fff;
+}
+
+@media (min-width: 991px) {
+  #call-to-action-services .cta-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+#call-to-action-services .cta-btn {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 26px;
+  border-radius: 3px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 3px solid #fff;
+  color: #fff;
+}
+
+#call-to-action-services .cta-btn:hover {
   background: #1bb1dc;
   border: 3px solid #1bb1dc;
 }
