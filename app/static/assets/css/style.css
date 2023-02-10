@@ -547,6 +547,27 @@ section {
   background: #f5f8fd;
 }
 
+/* How courses work section
+------------------------------- */
+.step-num-box {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.step-icon {
+  color: #f7f6fa;
+  width: 140px;
+  height: 140px;
+  position: relative;
+  border: 3px solid #f7f6fa;
+  border-radius: 50%;
+  line-height: 140px;
+  font-size: 40px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
 /* About Us Section
 --------------------------------*/
 #about {

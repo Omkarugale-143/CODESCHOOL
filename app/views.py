@@ -11,6 +11,9 @@ def index(request):
 def services(request):
     return render(request, 'app/services.html')
 
+def samp(request):
+    return render(request, 'app/samp.html')
+
 def contact_form(request):
     if request.method == "POST":
         name = request.POST.get("name")
