@@ -195,14 +195,14 @@
     </section><!--  End Call To Action Section -->
 
       <!-- registration pop-up modal-->
-      <div id="enrollModal" class="modal fade" tabindex="-1">
+      <div id="enrollModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                   <div class="pop-up-text text-center">
                     <h1 class="modal-title">Register</h2>
                   </div>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  {% comment %} <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> {% endcomment %}
                 </div>
                 <div class="modal-body">
                   <form action="{% url 'register' %}" method="POST">
@@ -259,7 +259,7 @@
     
               <div class="col-lg-4 col-md-6">
                 <div class="about-img" data-aos="fade-right" data-aos-delay="100">
-                  <img src="{% static 'assets/img/java-dsa-1.png' %}" alt="" style="border: 5px solid #1bb1dc;">
+                  <img src="{% static 'assets/img/school/javadsa.jpg' %}" alt="" style="border: 5px solid #1bb1dc;">
                   {% comment %} <img src="{% static 'assets/img/java-dsa-2.png' %}" alt="" style="border: 5px solid #555;"> {% endcomment %}
                 </div>
               </div>
@@ -268,6 +268,7 @@
                 <div class="about-content justify" data-aos="fade-left" data-aos-delay="100">
                   <h2 style="color:white;">Java DSA Placement course</h2>
                   <h4>3 Months Complete Course</h4>
+                  <h5>Pricing: ₹999</h5>
                   <p> In this course you will completely learn about the Java Language from scratch. Even if you 
                     are from a non-technical background, you can take up this course to start your journey. In this 
                     course we'll cover complete Data Structures and Algorithms. You will also get full guidance on how to 
@@ -423,12 +424,12 @@
                 <div class="card-header course-card-header">
                     <h3><b>What will you get after completing this Course?</b></h3>
                 </div>
-                <div class="card-body">
-                    <ul style="padding-left:1em; margin-left:1em; list-style-type:none; font-size:large;">
-                    <li><b><i class="bi bi-arrow-right"></i>Certification of Completion</b></li>
-                    <li><b><i class="bi bi-arrow-right"></i>Letter Of Recommendation</b></li>
-                    <li><b><i class="bi bi-arrow-right"></i>Complete Placement Assistance</b></li>
-                    <li><b><i class="bi bi-arrow-right"></i>Live Project Internship in PNT Robotics and Solution</b></li>
+                <div class="course-card-body">
+                    <ul style="list-style-type: none; ">
+                    <li><b><i class="bi bi-journal-check"></i>&nbsp;Certification of Completion</b></li>
+                    <li><b><i class="bi bi-card-text"></i>&nbsp;Letter Of Recommendation</b></li>
+                    <li><b><i class="bi bi-people"></i>&nbsp;Complete Placement Assistance</b></li>
+                    <li><b><i class="bi bi-person-workspace"></i>&nbsp;Live Project Internship in PNT Robotics and Solution</b></li>
                     </ul>
                 </div>
               </div>
@@ -462,20 +463,22 @@
     
               <div class="col-lg-4 col-md-6">
                 <div class="about-img" data-aos="fade-right" data-aos-delay="100">
-                  <img src="{% static 'assets/img/java-dsa-1.png' %}" alt="" style="border: 5px solid #1bb1dc;">
+                  <img src="{% static 'assets/img/school/webdev.jpg' %}" alt="" style="border: 5px solid #1bb1dc;">
                   {% comment %} <img src="{% static 'assets/img/java-dsa-2.png' %}" alt="" style="border: 5px solid #555;"> {% endcomment %}
                 </div>
               </div>
     
               <div class="col-lg-8 col-md-6">
                 <div class="about-content justify" data-aos="fade-left" data-aos-delay="100">
-                  <h2 style="color:white;">Web Development Course</h2><br>
-                  <p> In this course you will completely learn about the Java Language from scratch. Even if you 
-                    are from a non-technical background, you can take up this course to start your journey. In this 
-                    course we'll cover complete Data Structures and Algorithms. You will also get full guidance on how to 
-                    build your resume so that you can get any job that you desire. To ace your interviews, we will provide
-                    you with mentorship sessions. There'll also be 100s of coding questions on all the important topics so that
-                    you don't miss out on anything and keep practicing harder!!</p>
+                  <h2 style="color:white;">Web Development Course</h2>
+                  <h4>3 Months Complete Course</h4>
+                  <h5>Pricing: ₹999</h5>
+                  <p> In this course you will completely learn about the basics of Web Fundamentals from scratch. 
+                    Even if you are from a non-technical background, you can take up this course to start your journey. 
+                    The course will cover various Frontend and Backend Frameworks as well as Bootstrap. 
+                    Along with that we will also cover complete tutorial on Git and Github and you'll be familiar with the 
+                    version control. You will also get to build projects in our live sessions conducted by experts. You will 
+                    also learn deployment and host your projects to share what you've built!!</p>
                     <div>
                       <a data-bs-toggle="modal" data-bs-target="#enrollModal" class="btn-get-started scrollto">Enroll Now</a>
                     </div>
@@ -625,14 +628,14 @@
                 <div class="card-header course-card-header">
                     <h3><b>What will you get after completing this Course?</b></h3>
                 </div>
-                <div class="card-body">
-                    <ul style="padding-left:1em; margin-left:1em; list-style-type:none; font-size:large;">
-                    <li><b><i class="bi bi-arrow-right"></i>Certification of Completion</b></li>
-                    <li><b><i class="bi bi-arrow-right"></i>Letter Of Recommendation</b></li>
-                    <li><b><i class="bi bi-arrow-right"></i>Complete Placement Assistance</b></li>
-                    <li><b><i class="bi bi-arrow-right"></i>Live Project Internship in PNT Robotics and Solution</b></li>
-                    </ul>
-                </div>
+                <div class="course-card-body">
+                  <ul style="list-style-type: none; ">
+                  <li><b><i class="bi bi-journal-check"></i>&nbsp;Certification of Completion</b></li>
+                  <li><b><i class="bi bi-card-text"></i>&nbsp;Letter Of Recommendation</b></li>
+                  <li><b><i class="bi bi-people"></i>&nbsp;Complete Placement Assistance</b></li>
+                  <li><b><i class="bi bi-person-workspace"></i>&nbsp;Live Project Internship in PNT Robotics and Solution</b></li>
+                  </ul>
+              </div>
               </div>
             </div>
           </div>
@@ -664,20 +667,22 @@
     
               <div class="col-lg-4 col-md-6">
                 <div class="about-img" data-aos="fade-right" data-aos-delay="100">
-                  <img src="{% static 'assets/img/java-dsa-1.png' %}" alt="" style="border: 5px solid #1bb1dc;">
+                  <img src="{% static 'assets/img/school/python.jpg' %}" alt="" style="border: 5px solid #1bb1dc;">
                   {% comment %} <img src="{% static 'assets/img/java-dsa-2.png' %}" alt="" style="border: 5px solid #555;"> {% endcomment %}
                 </div>
               </div>
     
               <div class="col-lg-8 col-md-6">
                 <div class="about-content justify" data-aos="fade-left" data-aos-delay="100">
-                  <h2 style="color:white;">Python Development Course</h2><br>
-                  <p> In this course you will completely learn about the Java Language from scratch. Even if you 
+                  <h2 style="color:white;">Python Development Course</h2>
+                  <h4>3 Months Complete Course</h4>
+                  <h5>Pricing: ₹999</h5>
+                  <p> In this course you will completely learn about the Python Language from scratch. Even if you 
                     are from a non-technical background, you can take up this course to start your journey. In this 
-                    course we'll cover complete Data Structures and Algorithms. You will also get full guidance on how to 
-                    build your resume so that you can get any job that you desire. To ace your interviews, we will provide
-                    you with mentorship sessions. There'll also be 100s of coding questions on all the important topics so that
-                    you don't miss out on anything and keep practicing harder!!</p>
+                    course we'll get started with the various modules in Python. Along with that we will also cover 
+                    complete tutorial on Git and Github and you'll be familiar with the version control. You will also 
+                    get to build projects in our live sessions conducted by experts. To expand your knowledge in python, 
+                    we will also learn about the trending topics in python such as AI, ML, Data Science and GUI Development.</p>
                     <div>
                       <a data-bs-toggle="modal" data-bs-target="#enrollModal" class="btn-get-started scrollto">Enroll Now</a>
                     </div>
@@ -751,16 +756,16 @@
                       <div id="flush-collapse1" class="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#accordionFlush3">
                         <div class="accordion-body">
                           <ul style="font-size: large;">
-                            <li>Flowcharts</li>
-                            <li>Variables and Data Types in Java</li>
-                            <li>Operators</li>
-                            <li>if-else Statements</li>
-                            <li>Flow Control (Loops)</li>
-                            <li>Patterns</li>
-                            <li>Functions and Methods</li>
-                            <li>Arrays</li>
-                            <li>Sorting Algorithms</li>
-                            <li>2D Arrays</li>
+                            <li>Introduction to Python</li>
+                            <li>Software required and their installation</li>
+                            <li>What is IDE?</li>
+                            <li>Python comments</li>
+                            <li>Python identifiers</li>
+                            <li>Python data types</li>
+                            <li>Simple and Complex</li>
+                            <li>Data structure</li>
+                            <li>Array, linked list (Singly and Doubly)</li>
+                            <li>Python type casting</li>
                           </ul>
                         </div>
                       </div>
@@ -772,11 +777,11 @@
                       <div id="flush-collapse2" class="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlush3">
                         <div class="accordion-body">
                           <ul style="font-size: large;">
-                            <li>Strings</li>
-                            <li>Bit Manipulation</li>
-                            <li>OOPs</li>
-                            <li>Recursion</li>
-                            <li>Divide and Conquer</li>
+                            <li>Integer catching in python</li>
+                            <li>Concept of importing anything</li>
+                            <li>Python built in functions overview</li>
+                            <li>Python string class methods overview</li>
+                            <li>Python operators</li>
                           </ul>
                         </div>
                       </div>
@@ -788,14 +793,13 @@
                       <div id="flush-collapse3" class="accordion-collapse collapse" aria-labelledby="flush-heading3" data-bs-parent="#accordionFlush3">
                         <div class="accordion-body">
                           <ul style="font-size: large;">
-                            <li>Backtracking</li>
-                            <li>Time and Space Complexity</li>
-                            <li>ArrayLists</li>
-                            <li>Linked Lists</li>
-                            <li>Stacks</li>
-                            <li>Queues</li>
-                            <li>Greedy Algorithms</li>
-                            <li>Binary Trees</li>
+                            <li>Python looping</li>
+                            <li>Python Commands</li>
+                            <li>OOPs (object-oriented procedure)</li>
+                            <li>Python inheritance</li>
+                            <li>Types of methods, variables and their scopes</li>
+                            <li>Exception handling in python</li>
+                            <li>File handling in python</li>
                           </ul>
                         </div>
                       </div>
@@ -807,13 +811,14 @@
                       <div id="flush-collapse4" class="accordion-collapse collapse" aria-labelledby="flush-heading4" data-bs-parent="#accordionFlush3">
                         <div class="accordion-body">
                           <ul style="font-size: large;">
-                            <li>Binary Search Trees</li>
-                            <li>Heaps/Priority Queues</li>
-                            <li>Hashing</li>
-                            <li>Tries</li>
-                            <li>Graphs</li>
-                            <li>Dynamic Programming</li>
-                            <li>Segment Trees</li>
+                            <li>Python Modules</li>
+                            <li>NumPy</li>
+                            <li>Pandas</li>
+                            <li>SciPy</li>
+                            <li>Matplotlib</li>
+                            <li>Python MySQL</li>
+                            <li>Python Django/Flask</li>
+                            <li>Python Machine Learning</li>
                           </ul>
                         </div>
                       </div>
@@ -827,14 +832,14 @@
                 <div class="card-header course-card-header">
                     <h3><b>What will you get after completing this Course?</b></h3>
                 </div>
-                <div class="card-body">
-                    <ul style="padding-left:1em; margin-left:1em; list-style-type:none; font-size:large;">
-                    <li><b><i class="bi bi-arrow-right"></i>Certification of Completion</b></li>
-                    <li><b><i class="bi bi-arrow-right"></i>Letter Of Recommendation</b></li>
-                    <li><b><i class="bi bi-arrow-right"></i>Complete Placement Assistance</b></li>
-                    <li><b><i class="bi bi-arrow-right"></i>Live Project Internship in PNT Robotics and Solution</b></li>
-                    </ul>
-                </div>
+                <div class="course-card-body">
+                  <ul style="list-style-type: none; ">
+                  <li><b><i class="bi bi-journal-check"></i>&nbsp;Certification of Completion</b></li>
+                  <li><b><i class="bi bi-card-text"></i>&nbsp;Letter Of Recommendation</b></li>
+                  <li><b><i class="bi bi-people"></i>&nbsp;Complete Placement Assistance</b></li>
+                  <li><b><i class="bi bi-person-workspace"></i>&nbsp;Live Project Internship in PNT Robotics and Solution</b></li>
+                  </ul>
+              </div>
               </div>
             </div>
           </div>
@@ -861,7 +866,7 @@
     </section><!--  End Call To Action Section -->
 
     <!-- ======= proposal Section ======= -->
-    <section id="about" class="about">
+    <section id="about" class="about" style="font-size:large">
 
       <div class="container" data-aos="fade-up">
         <div class="row">
@@ -898,14 +903,9 @@
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
-              <img src="{% static 'assets/img/school/timeline.png' %}" alt="">
-              {% comment %} <img src="{% static 'assets/img/bmpslider7.jpeg' %}" alt=""> {% endcomment %}
-            </div>
-          </div>
+          <div class="col-md-2"></div>
 
-          <div class="col-md-2">
+          <div class="col-md-4">
             <div class="about-content" data-aos="fade-left" data-aos-delay="100">
               <h2>TIMELINE</h2>
               <ul style="padding-left:1em; margin-left:1em;">
@@ -981,34 +981,34 @@
     <section class="mt-4 container" id="school">
       <div class="container-fluid" data-aos="fade-out">
           <div class="section-title text-center">
-            <h2 class=" mb-lg-5  pb-3 pb-lg-0 pt-lg-3 pt-0">Choose your Grade</h2>
-            <ul class="nav nav-pills nav-justified" role="tablist" id="myTab">
-              <li class="nav-item waves-effect waves-light" role="presentation">
+            <h2 class=" mb-lg-5  pb-3 pb-lg-0 pt-lg-3 pt-0"><b>Choose your Grade</b></h2>
+            <ul class="nav nav-pills nav-justified" role="tablist" id="myTab" style="font-size:large;">
+              <li class="nav-item waves-effect waves-light" role="presentation" style="background-color:#eee; border-radius:2rem;">
                   <a class="nav-link active" data-bs-toggle="tab" href="#grade1-2" role="tab" aria-selected="true">
                       <span class="d-none d-sm-block">Grade 1-2</span> 
                   </a>
               </li>
-              <li class="nav-item waves-effect waves-light" role="presentation">
+              <li class="nav-item waves-effect waves-light" role="presentation" style="background-color:#eee; border-radius:2rem;">
                   <a class="nav-link" data-bs-toggle="tab" href="#grade3-4" role="tab" aria-selected="false" tabindex="-1">
                       <span class="d-none d-sm-block">Grade 3-4</span> 
                   </a>
               </li>
-              <li class="nav-item waves-effect waves-light" role="presentation">
+              <li class="nav-item waves-effect waves-light" role="presentation" style="background-color:#eee; border-radius:2rem;">
                   <a class="nav-link" data-bs-toggle="tab" href="#grade5-6" role="tab" aria-selected="false" tabindex="-1">
                       <span class="d-none d-sm-block">Grade 5-6</span>   
                   </a>
               </li>
-              <li class="nav-item waves-effect waves-light" role="presentation">
+              <li class="nav-item waves-effect waves-light" role="presentation" style="background-color:#eee; border-radius:2rem;">
                   <a class="nav-link" data-bs-toggle="tab" href="#grade7-8" role="tab" aria-selected="false" tabindex="-1">
                       <span class="d-none d-sm-block">Grade 7-8</span>    
                   </a>
               </li>
-              <li class="nav-item waves-effect waves-light" role="presentation">
+              <li class="nav-item waves-effect waves-light" role="presentation" style="background-color:#eee; border-radius:2rem;">
                 <a class="nav-link" data-bs-toggle="tab" href="#grade9-10" role="tab" aria-selected="false" tabindex="-1">
                     <span class="d-none d-sm-block">Grade 9-10</span>    
                 </a>
             </li>
-            <li class="nav-item waves-effect waves-light" role="presentation">
+            <li class="nav-item waves-effect waves-light" role="presentation" style="background-color:#eee; border-radius:2rem;">
               <a class="nav-link" data-bs-toggle="tab" href="#grade11-12" role="tab" aria-selected="false" tabindex="-1">
                   <span class="d-none d-sm-block">Grade 11-12</span>    
               </a>

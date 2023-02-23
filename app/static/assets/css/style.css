@@ -816,6 +816,15 @@ section {
   color:#fff;
 }
 
+.course-card-body {
+  list-style: none; 
+  padding-left: 1rem;
+  margin-left: 0.5rem; 
+  margin-top: 2rem; 
+  margin-bottom: 1.5rem; 
+  font-size: x-large;
+}
+
 /* Call to Action Services Page */
 
 #call-to-action-school {
