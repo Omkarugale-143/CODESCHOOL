@@ -75,8 +75,9 @@
 
     .step-desc h5 {
       color: #fff;
-      font-size: 16px;
-      font-weight: 500;
+
+      {% comment %} font-size: 16px;
+      font-weight: 500; {% endcomment %}
   }
 
     .why-choose {
@@ -288,7 +289,7 @@
             </div>
             {% endfor %}
           {% endif %} 
-          <h2>CODESCHOOL<br>for School and College Students <span></span></h2>
+          <h2>Start your Coding Career<br>with CODESCHOOL <span></span></h2>
           <div>
             <a data-bs-toggle="modal" data-bs-target="#myModal" class="btn-get-started scrollto">Enroll Now</a>
           </div>
@@ -397,9 +398,9 @@
           <div class="col-sm-3" data-aos="zoom-in">
             <div class="card">
               <img class="card-img-top" src="{% static 'assets/img/img1.jpeg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <div class="card-body text-center" style="color:#2d2b46;">
+                <h4 class="card-title"><b>Python Full Stack Development and AiML Course</b></h4>
+                {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}
                 {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
               </div>
             </div>
@@ -407,9 +408,9 @@
           <div class="col-sm-3" data-aos="zoom-in">
             <div class="card">
               <img class="card-img-top" src="{% static 'assets/img/img1.jpeg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <div class="card-body text-center" style="color:#2d2b46;">
+                <h4 class="card-title"><b>Python Full Stack Development and AiML Course</b></h4>
+                {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}
                 {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
               </div>
             </div>
@@ -417,9 +418,9 @@
           <div class="col-sm-3" data-aos="zoom-in">
             <div class="card">
               <img class="card-img-top" src="{% static 'assets/img/img1.jpeg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <div class="card-body text-center" style="color:#2d2b46;">
+                <h4 class="card-title"><b>Python Full Stack Development and AiML Course</b></h4>
+                {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}
                 {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
               </div>
             </div>
@@ -427,9 +428,9 @@
           <div class="col-sm-3" data-aos="zoom-in">
             <div class="card">
               <img class="card-img-top" src="{% static 'assets/img/img1.jpeg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <div class="card-body text-center" style="color:#2d2b46;">
+                <h4 class="card-title"><b>Python Full Stack Development and AiML Course</b></h4>
+                {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}
                 {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
               </div>
             </div>
@@ -575,6 +576,7 @@
       </div>
     </section><!--  End How our courses work Section -->
 
+    <!-- ======= why choose us Section ======= -->
     <section class="mt-4 container">
       <div class="container-fluid" data-aos="fade-out">
           <div class="section-title text-center">
@@ -663,7 +665,8 @@
               </div>
           </div>
       </div>
-  </section>
+    </section>
+    <!-- End Why Us Section -->
 
     <!-- ======= Why Us Section ======= -->
     {% comment %} <section id="why-us" class="why-us">

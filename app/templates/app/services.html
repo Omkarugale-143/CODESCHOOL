@@ -30,11 +30,86 @@
   <script src="{% static 'assets/jquery/jquery-3.6.3.min.js' %}"></script>
   <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 
-  <script>
-    $(document).ready(function(){
-      $("#myModal").modal('show');
-    });
-  </script>
+  <style>
+    .why-choose {
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+      --blue: #007bff;
+      --indigo: #6610f2;
+      --purple: #6f42c1;
+      --pink: #e83e8c;
+      --red: #dc3545;
+      --orange: #fd7e14;
+      --yellow: #ffc107;
+      --green: #28a745;
+      --teal: #20c997;
+      --cyan: #17a2b8;
+      --white: #fff;
+      --gray: #6c757d;
+      --gray-dark: #343a40;
+      --primary: #007bff;
+      --secondary: #6c757d;
+      --success: #28a745;
+      --info: #17a2b8;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --breakpoint-xs: 0;
+      --breakpoint-sm: 576px;
+      --breakpoint-md: 768px;
+      --breakpoint-lg: 992px;
+      --breakpoint-xl: 1200px;
+      --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-weight: 400;
+      text-align: left;
+      font-size: 16px;
+      line-height: 1.4;
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif !important;
+      background-color: #151f2a;
+      border-radius: 10px;
+      padding: 40px 40px 40px 40px;
+    }  
+
+    .why-choose-card:hover {
+      transform:scale(1.1);
+      box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+      background-color: #f7f6fa97;
+    }
+
+    .collapsible {
+      background-color: #fff;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .active, .collapsible:hover {
+      background-color: #eee;
+    }
+
+    .collapsible:after {
+      content: '\02795'; /* Unicode character for "plus" sign (+) */
+      font-size: 13px;
+      color: white;
+      float: right;
+      margin-left: 5px;
+    }
+    
+    .active:after {
+      content: "\2796"; /* Unicode character for "minus" sign (-) */
+    }
+
+  </style>
 
   <!-- =======================================================
   * Template Name: Rapid - v4.9.1
@@ -56,15 +131,24 @@
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
             <li><a class="nav-link scrollto" href="{% url 'index' %}">Home</a></li>
-            <li class="dropdown"><a href="#about"><span>Placement Course</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#call-to-action-services"><span>Placement Course</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
-              <li><a href="#">Java DSA Course</a></li>
-              <li><a href="#">Web Development Course</a></li>
-              <li><a href="#">Python Development Course</a></li>
+              <li><a href="#java">Java DSA Course</a></li>
+              <li><a href="#web">Web Development Course</a></li>
+              <li><a href="#python">Python Development Course</a></li>
               </ul>
             </li> 
-            <li><a class="nav-link scrollto" href="#services">School Courses</a></li>
-            <li><a class="nav-link scrollto" href="#team">Crash Courses</a></li>
+            <li class="dropdown"><a href="#call-to-action-school"><span>School Curriculum</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+              <li><a href="#school">Grade 1-2</a></li>
+              <li><a href="#school">Grade 3-4</a></li>
+              <li><a href="#school">Grade 5-6</a></li>
+              <li><a href="#school">Grade 7-8</a></li>
+              <li><a href="#school">Grade 9-10</a></li>
+              <li><a href="#school">Grade 11-12</a></li>
+              </ul>
+            </li> 
+            {% comment %} <li><a class="nav-link scrollto" href="#team">Crash Courses</a></li> {% endcomment %}
             <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                 <li><a href="#">Drop Down 1</a></li>
@@ -108,80 +192,142 @@
           </div>
   
         </div>
-      </section><!--  End Call To Action Section -->
+    </section><!--  End Call To Action Section -->
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-
-        <div class="container" data-aos="fade-up">
-          <div class="row">
-  
-            <div class="col-lg-4 col-md-6">
-              <div class="about-img" data-aos="fade-right" data-aos-delay="100">
-                <img src="{% static 'assets/img/java-dsa-1.png' %}" alt="" style="border: 5px solid #1bb1dc;">
-                {% comment %} <img src="{% static 'assets/img/java-dsa-2.png' %}" alt="" style="border: 5px solid #555;"> {% endcomment %}
-              </div>
+      <!-- registration pop-up modal-->
+      <div id="enrollModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <div class="pop-up-text text-center">
+                    <h1 class="modal-title">Register</h2>
+                  </div>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="{% url 'register' %}" method="POST">
+                    {% csrf_token %}
+                      <div class="mb-3 px-5 input-group">
+                        <span class="input-group-text" id="basic-addon1"><img src="{% static 'assets/vendor/icons/person-fill.svg' %}"></span>
+                        <input type="text" class="form-control" id="name" name="Name" placeholder="Name" required>
+                      </div>
+                      <div class="mb-3 px-5 input-group">
+                        <span class="input-group-text" id="basic-addon1"><img src="{% static 'assets/vendor/icons/envelope-fill.svg' %}"></i></span>
+                        <input type="email" class="form-control" id="email" name="Email" placeholder="Email" required>
+                      </div>
+                      <div class="mb-3 px-5 input-group">
+                        <span class="input-group-text" id="basic-addon1"><img src="{% static 'assets/vendor/icons/telephone-fill.svg' %}"></i></span>
+                        <input type="text" class="form-control" id="contact" name="Contact" placeholder="Mobile Number" required>
+                      </div>
+                      <div class="mb-3 px-5 input-group">
+                        <span class="input-group-text" id="basic-addon1"><img src="{% static 'assets/vendor/icons/building-fill.svg' %}"></i></span>
+                        <input type="text" class="form-control" id="college" name="College" placeholder="College Name" required>
+                      </div>
+                      <div class="mb-3 px-5 input-group">
+                        <span class="input-group-text" id="basic-addon1"><img src="{% static 'assets/vendor/icons/calendar-date-fill.svg' %}"></i></span>
+                        <input type="number" class="form-control" id="courseYear" name="CourseYear" placeholder="Course Year" required>
+                      </div>
+                      <div class="mb-3 px-5 input-group">
+                        <span class="input-group-text" id="basic-addon1"><img src="{% static 'assets/vendor/icons/filter-square-fill.svg' %}"></i></span>
+                        <select name="Course" id="course" class="form-control" required>
+                          <option selected="False" style="display: none">Select Course </option> 
+                          <option value="PythonAiML">Python AI ML</option>
+                          <option value="WebDev">Web Development</option>
+                          <option value="RoboticsAuto">Robotics Automation</option>
+                        </select>
+                      </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-lg btn-block" 
+                        style="background: #1bb1dc; padding: 10px 32px; border-radius: 4px; color: #fff;" 
+                        data-bs-dismiss="modal">Register Now
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                {% comment %} <div class="modal-footer">
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div> {% endcomment %}
             </div>
-  
-            <div class="col-lg-8 col-md-6">
-              <div class="about-content justify" data-aos="fade-left" data-aos-delay="100">
-                <h2>Java DSA Placement course</h2><br>
-                <p> In this course you will completely learn about the Java Language from scratch. Even if you 
-                  are from a non-technical background, you can take up this course to start your journey. In this 
-                  course we'll cover complete Data Structures and Algorithms. You will also get full guidance on how to 
-                  build your resume so that you can get any job that you desire. To ace your interviews, we will provide
-                  you with mentorship sessions. There'll also be 100s of coding questions on all the important topics so that
-                  you don't miss out on anything and keep practicing harder!!</p>
-                {% comment %} <div class="row">
-                    <div class="col-md-6">
-                        <div class="card course-card">
-                            <div class="card-header course-card-header">
-                                <h4>What will you learn in this Course?</h4>
-                            </div>
-                            <div class="card-body">
-                                <ul style="padding-left:1em; margin-left:1em;">
-                                <li><i class="bi bi-arrow-right"></i>Basics of Java Language</li>
-                                <li><i class="bi bi-arrow-right"></i>Complete Data Structures & Algorithms</li>
-                                <li><i class="bi bi-arrow-right"></i>Complete Guidance on Resume Preparation</li>
-                                <li><i class="bi bi-arrow-right"></i>Complete Mentorship Sessions on Interview Preparation</li>
-                                <li><i class="bi bi-arrow-right"></i>100's of Coding Questions on All Important Topics</li>
-                                </ul>
-                            </div>
-                        </div>
+        </div>
+      </div> <!-- registration modal ends -->
+
+      <!-- ======= java dsa Section ======= -->
+      <section id="java" class="about">
+        <div class="container" data-aos="fade-up">
+          <div class="why-choose">
+            <div class="row">
+    
+              <div class="col-lg-4 col-md-6">
+                <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+                  <img src="{% static 'assets/img/java-dsa-1.png' %}" alt="" style="border: 5px solid #1bb1dc;">
+                  {% comment %} <img src="{% static 'assets/img/java-dsa-2.png' %}" alt="" style="border: 5px solid #555;"> {% endcomment %}
+                </div>
+              </div>
+    
+              <div class="col-lg-8 col-md-6">
+                <div class="about-content justify" data-aos="fade-left" data-aos-delay="100">
+                  <h2 style="color:white;">Java DSA Placement course</h2>
+                  <h4>3 Months Complete Course</h4>
+                  <p> In this course you will completely learn about the Java Language from scratch. Even if you 
+                    are from a non-technical background, you can take up this course to start your journey. In this 
+                    course we'll cover complete Data Structures and Algorithms. You will also get full guidance on how to 
+                    build your resume so that you can get any job that you desire. To ace your interviews, we will provide
+                    you with mentorship sessions. There'll also be 100s of coding questions on all the important topics so that
+                    you don't miss out on anything and keep practicing harder!!</p>
+                    <div>
+                      <a data-bs-toggle="modal" data-bs-target="#enrollModal" class="btn-get-started scrollto">Enroll Now</a>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card course-card">
-                            <div class="card-header course-card-header">
-                                <h4>What will you get after completing this Course?</h4>
-                            </div>
-                            <div class="card-body">
-                                <ul style="padding-left:1em; margin-left:1em;">
-                                <li><i class="bi bi-arrow-right"></i>Certification of Completion</li>
-                                <li><i class="bi bi-arrow-right"></i>Letter Of Recommendation</li>
-                                <li><i class="bi bi-arrow-right"></i>Complete Placement Assistance</li>
-                                <li><i class="bi bi-arrow-right"></i>Live Project Internship in PNT Robotics and Solution</li>
-                                {% comment %} <li><i class="bi bi-arrow-right"></i>100's of Coding Questions on All Important Topics</li> 
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> {% endcomment %}
-                {% comment %} <br>
-                <div>
-                    <a data-bs-toggle="modal" data-bs-target="#syllabusModal" class="btn-get-started scrollto">Syllabus</a>
-                </div> {% endcomment %}
-                
-                {% comment %} <h3>BuildMyProjects is an educational startup that was founded in 2015. We provide courses on robotics to school kids.
-                  We have successfully conducted various workshops on robotics, Python, and latest technologies. </h3>
-                <p>The company is a result of the passion for knowledge and learning. It was started in 2015 with an aim to provide online courses on Robotics and other technologies to school & college students .</p>
-                <p>In 2016, we launched CodeSchool Series for School and College students. This series is designed to enhance the knowledge of latest technologies related to robotics to School kids and provide free mentorships on placement guidance to college students.
-  
-                  We are proud to announce our recent launch of CodeSchool Series 2, which has been designed specifically for college students and provides them with real-world experience through practical assignments that includes coding challenges and projects.</p> {% endcomment %}
-                <!-- <ul>
-                  <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo</li>
-                  <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                </ul> -->
+                  {% comment %} <div class="row">
+                      <div class="col-md-6">
+                          <div class="card course-card">
+                              <div class="card-header course-card-header">
+                                  <h4>What will you learn in this Course?</h4>
+                              </div>
+                              <div class="card-body">
+                                  <ul style="padding-left:1em; margin-left:1em;">
+                                  <li><i class="bi bi-arrow-right"></i>Basics of Java Language</li>
+                                  <li><i class="bi bi-arrow-right"></i>Complete Data Structures & Algorithms</li>
+                                  <li><i class="bi bi-arrow-right"></i>Complete Guidance on Resume Preparation</li>
+                                  <li><i class="bi bi-arrow-right"></i>Complete Mentorship Sessions on Interview Preparation</li>
+                                  <li><i class="bi bi-arrow-right"></i>100's of Coding Questions on All Important Topics</li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="card course-card">
+                              <div class="card-header course-card-header">
+                                  <h4>What will you get after completing this Course?</h4>
+                              </div>
+                              <div class="card-body">
+                                  <ul style="padding-left:1em; margin-left:1em;">
+                                  <li><i class="bi bi-arrow-right"></i>Certification of Completion</li>
+                                  <li><i class="bi bi-arrow-right"></i>Letter Of Recommendation</li>
+                                  <li><i class="bi bi-arrow-right"></i>Complete Placement Assistance</li>
+                                  <li><i class="bi bi-arrow-right"></i>Live Project Internship in PNT Robotics and Solution</li>
+                                  {% comment %} <li><i class="bi bi-arrow-right"></i>100's of Coding Questions on All Important Topics</li> 
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div> {% endcomment %}
+                  {% comment %} <br>
+                  <div>
+                      <a data-bs-toggle="modal" data-bs-target="#syllabusModal" class="btn-get-started scrollto">Syllabus</a>
+                  </div> {% endcomment %}
+                  
+                  {% comment %} <h3>BuildMyProjects is an educational startup that was founded in 2015. We provide courses on robotics to school kids.
+                    We have successfully conducted various workshops on robotics, Python, and latest technologies. </h3>
+                  <p>The company is a result of the passion for knowledge and learning. It was started in 2015 with an aim to provide online courses on Robotics and other technologies to school & college students .</p>
+                  <p>In 2016, we launched CodeSchool Series for School and College students. This series is designed to enhance the knowledge of latest technologies related to robotics to School kids and provide free mentorships on placement guidance to college students.
+    
+                    We are proud to announce our recent launch of CodeSchool Series 2, which has been designed specifically for college students and provides them with real-world experience through practical assignments that includes coding challenges and projects.</p> {% endcomment %}
+                  <!-- <ul>
+                    <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo</li>
+                    <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                    <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                  </ul> -->
+                </div>
               </div>
             </div>
           </div>
@@ -190,19 +336,17 @@
             <div class="col-lg-6">
               <div class="card course-card">
                 <div class="card-header course-card-header">
-                    <h4>Syllabus</h4>
+                    <h3><b>Syllabus</b></h3>
                 </div>
                 <div class="card-body">
                   <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item">
-                      <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                          Week 1 and 2
+                        <button class="collapsible" type="button" style="font-size: large;">
+                          <b>Week 1 and 2</b>
                         </button>
-                      </h2>
                       <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                          <ul>
+                          <ul style="font-size: large;">
                             <li>Flowcharts</li>
                             <li>Variables and Data Types in Java</li>
                             <li>Operators</li>
@@ -218,14 +362,12 @@
                       </div>
                     </div>
                     <div class="accordion-item">
-                      <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                          Week 3 and 4
+                        <button class="collapsible" type="button" style="font-size: large;">
+                          <b>Week 3 and 4</b>
                         </button>
-                      </h2>
                       <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                          <ul>
+                          <ul style="font-size: large;">
                             <li>Strings</li>
                             <li>Bit Manipulation</li>
                             <li>OOPs</li>
@@ -236,14 +378,12 @@
                       </div>
                     </div>
                     <div class="accordion-item">
-                      <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                          Month 2
+                        <button class="collapsible" type="button" style="font-size: large;">
+                          <b>Month 2</b>
                         </button>
-                      </h2>
                       <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                          <ul>
+                          <ul style="font-size: large;">
                             <li>Backtracking</li>
                             <li>Time and Space Complexity</li>
                             <li>ArrayLists</li>
@@ -257,14 +397,12 @@
                       </div>
                     </div>
                     <div class="accordion-item">
-                      <h2 class="accordion-header" id="flush-headingFour">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                          Month 3
+                        <button class="collapsible" type="button" style="font-size: large;">
+                          <b>Month 3</b>
                         </button>
-                      </h2>
                       <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                          <ul>
+                          <ul style="font-size: large;">
                             <li>Binary Search Trees</li>
                             <li>Heaps/Priority Queues</li>
                             <li>Hashing</li>
@@ -283,14 +421,14 @@
             <div class="col-lg-6">
               <div class="card course-card">
                 <div class="card-header course-card-header">
-                    <h4>What will you get after completing this Course?</h4>
+                    <h3><b>What will you get after completing this Course?</b></h3>
                 </div>
                 <div class="card-body">
-                    <ul style="padding-left:1em; margin-left:1em; list-style-type:none;">
-                    <li><i class="bi bi-arrow-right"></i>Certification of Completion</li>
-                    <li><i class="bi bi-arrow-right"></i>Letter Of Recommendation</li>
-                    <li><i class="bi bi-arrow-right"></i>Complete Placement Assistance</li>
-                    <li><i class="bi bi-arrow-right"></i>Live Project Internship in PNT Robotics and Solution</li>
+                    <ul style="padding-left:1em; margin-left:1em; list-style-type:none; font-size:large;">
+                    <li><b><i class="bi bi-arrow-right"></i>Certification of Completion</b></li>
+                    <li><b><i class="bi bi-arrow-right"></i>Letter Of Recommendation</b></li>
+                    <li><b><i class="bi bi-arrow-right"></i>Complete Placement Assistance</b></li>
+                    <li><b><i class="bi bi-arrow-right"></i>Live Project Internship in PNT Robotics and Solution</b></li>
                     </ul>
                 </div>
               </div>
@@ -314,7 +452,924 @@
             </div>
         </div> {% endcomment %}
   
-      </section><!-- End About Section -->
+      </section><!-- End java dsa Section -->
+
+      <!-- ======= web dev Section ======= -->
+      <section id="web" class="about">
+        <div class="container" data-aos="fade-up">
+          <div class="why-choose">
+            <div class="row">
+    
+              <div class="col-lg-4 col-md-6">
+                <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+                  <img src="{% static 'assets/img/java-dsa-1.png' %}" alt="" style="border: 5px solid #1bb1dc;">
+                  {% comment %} <img src="{% static 'assets/img/java-dsa-2.png' %}" alt="" style="border: 5px solid #555;"> {% endcomment %}
+                </div>
+              </div>
+    
+              <div class="col-lg-8 col-md-6">
+                <div class="about-content justify" data-aos="fade-left" data-aos-delay="100">
+                  <h2 style="color:white;">Web Development Course</h2><br>
+                  <p> In this course you will completely learn about the Java Language from scratch. Even if you 
+                    are from a non-technical background, you can take up this course to start your journey. In this 
+                    course we'll cover complete Data Structures and Algorithms. You will also get full guidance on how to 
+                    build your resume so that you can get any job that you desire. To ace your interviews, we will provide
+                    you with mentorship sessions. There'll also be 100s of coding questions on all the important topics so that
+                    you don't miss out on anything and keep practicing harder!!</p>
+                    <div>
+                      <a data-bs-toggle="modal" data-bs-target="#enrollModal" class="btn-get-started scrollto">Enroll Now</a>
+                    </div>
+                  {% comment %} <div class="row">
+                      <div class="col-md-6">
+                          <div class="card course-card">
+                              <div class="card-header course-card-header">
+                                  <h4>What will you learn in this Course?</h4>
+                              </div>
+                              <div class="card-body">
+                                  <ul style="padding-left:1em; margin-left:1em;">
+                                  <li><i class="bi bi-arrow-right"></i>Basics of Java Language</li>
+                                  <li><i class="bi bi-arrow-right"></i>Complete Data Structures & Algorithms</li>
+                                  <li><i class="bi bi-arrow-right"></i>Complete Guidance on Resume Preparation</li>
+                                  <li><i class="bi bi-arrow-right"></i>Complete Mentorship Sessions on Interview Preparation</li>
+                                  <li><i class="bi bi-arrow-right"></i>100's of Coding Questions on All Important Topics</li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="card course-card">
+                              <div class="card-header course-card-header">
+                                  <h4>What will you get after completing this Course?</h4>
+                              </div>
+                              <div class="card-body">
+                                  <ul style="padding-left:1em; margin-left:1em;">
+                                  <li><i class="bi bi-arrow-right"></i>Certification of Completion</li>
+                                  <li><i class="bi bi-arrow-right"></i>Letter Of Recommendation</li>
+                                  <li><i class="bi bi-arrow-right"></i>Complete Placement Assistance</li>
+                                  <li><i class="bi bi-arrow-right"></i>Live Project Internship in PNT Robotics and Solution</li>
+                                  {% comment %} <li><i class="bi bi-arrow-right"></i>100's of Coding Questions on All Important Topics</li> 
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div> {% endcomment %}
+                  {% comment %} <br>
+                  <div>
+                      <a data-bs-toggle="modal" data-bs-target="#syllabusModal" class="btn-get-started scrollto">Syllabus</a>
+                  </div> {% endcomment %}
+                  
+                  {% comment %} <h3>BuildMyProjects is an educational startup that was founded in 2015. We provide courses on robotics to school kids.
+                    We have successfully conducted various workshops on robotics, Python, and latest technologies. </h3>
+                  <p>The company is a result of the passion for knowledge and learning. It was started in 2015 with an aim to provide online courses on Robotics and other technologies to school & college students .</p>
+                  <p>In 2016, we launched CodeSchool Series for School and College students. This series is designed to enhance the knowledge of latest technologies related to robotics to School kids and provide free mentorships on placement guidance to college students.
+    
+                    We are proud to announce our recent launch of CodeSchool Series 2, which has been designed specifically for college students and provides them with real-world experience through practical assignments that includes coding challenges and projects.</p> {% endcomment %}
+                  <!-- <ul>
+                    <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo</li>
+                    <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                    <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                  </ul> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card course-card">
+                <div class="card-header course-card-header">
+                    <h3><b>Syllabus</b></h3>
+                </div>
+                <div class="card-body">
+                  <div class="accordion accordion-flush" id="accordionFlush">
+                    <div class="accordion-item">
+                        <button class="collapsible" type="button" style="font-size: large;">
+                          <b>Week 1 and 2</b>
+                        </button>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFlush">
+                        <div class="accordion-body">
+                          <ul style="font-size: large;">
+                            <li>Flowcharts</li>
+                            <li>Variables and Data Types in Java</li>
+                            <li>Operators</li>
+                            <li>if-else Statements</li>
+                            <li>Flow Control (Loops)</li>
+                            <li>Patterns</li>
+                            <li>Functions and Methods</li>
+                            <li>Arrays</li>
+                            <li>Sorting Algorithms</li>
+                            <li>2D Arrays</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="collapsible" type="button" style="font-size: large;">
+                          <b>Week 3 and 4</b>
+                        </button>
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFlush">
+                        <div class="accordion-body">
+                          <ul style="font-size: large;">
+                            <li>Strings</li>
+                            <li>Bit Manipulation</li>
+                            <li>OOPs</li>
+                            <li>Recursion</li>
+                            <li>Divide and Conquer</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="collapsible" type="button" style="font-size: large;">
+                          <b>Month 2</b>
+                        </button>
+                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFlush">
+                        <div class="accordion-body">
+                          <ul style="font-size: large;">
+                            <li>Backtracking</li>
+                            <li>Time and Space Complexity</li>
+                            <li>ArrayLists</li>
+                            <li>Linked Lists</li>
+                            <li>Stacks</li>
+                            <li>Queues</li>
+                            <li>Greedy Algorithms</li>
+                            <li>Binary Trees</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="collapsible" type="button" style="font-size: large;">
+                          <b>Month 3</b>
+                        </button>
+                      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionFlush">
+                        <div class="accordion-body">
+                          <ul style="font-size: large;">
+                            <li>Binary Search Trees</li>
+                            <li>Heaps/Priority Queues</li>
+                            <li>Hashing</li>
+                            <li>Tries</li>
+                            <li>Graphs</li>
+                            <li>Dynamic Programming</li>
+                            <li>Segment Trees</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card course-card">
+                <div class="card-header course-card-header">
+                    <h3><b>What will you get after completing this Course?</b></h3>
+                </div>
+                <div class="card-body">
+                    <ul style="padding-left:1em; margin-left:1em; list-style-type:none; font-size:large;">
+                    <li><b><i class="bi bi-arrow-right"></i>Certification of Completion</b></li>
+                    <li><b><i class="bi bi-arrow-right"></i>Letter Of Recommendation</b></li>
+                    <li><b><i class="bi bi-arrow-right"></i>Complete Placement Assistance</b></li>
+                    <li><b><i class="bi bi-arrow-right"></i>Live Project Internship in PNT Robotics and Solution</b></li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Syllabus Modal -->
+        {% comment %} <div class="modal fade" id="syllabusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <div class="pop-up-text text-center">
+                    <h1 class="modal-title fs-3">Java DSA Placement Course Syllabus</h1>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <img src="{% static 'assets/img/java-dsa-syllabus.png' %}" style="width: 765px;">
+                </div>
+            </div>
+            </div>
+        </div> {% endcomment %}
+  
+      </section><!-- End web dev Section -->
+
+      <!-- ======= python dev Section ======= -->
+      <section id="python" class="about">
+        <div class="container" data-aos="fade-up">
+          <div class="why-choose">
+            <div class="row">
+    
+              <div class="col-lg-4 col-md-6">
+                <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+                  <img src="{% static 'assets/img/java-dsa-1.png' %}" alt="" style="border: 5px solid #1bb1dc;">
+                  {% comment %} <img src="{% static 'assets/img/java-dsa-2.png' %}" alt="" style="border: 5px solid #555;"> {% endcomment %}
+                </div>
+              </div>
+    
+              <div class="col-lg-8 col-md-6">
+                <div class="about-content justify" data-aos="fade-left" data-aos-delay="100">
+                  <h2 style="color:white;">Python Development Course</h2><br>
+                  <p> In this course you will completely learn about the Java Language from scratch. Even if you 
+                    are from a non-technical background, you can take up this course to start your journey. In this 
+                    course we'll cover complete Data Structures and Algorithms. You will also get full guidance on how to 
+                    build your resume so that you can get any job that you desire. To ace your interviews, we will provide
+                    you with mentorship sessions. There'll also be 100s of coding questions on all the important topics so that
+                    you don't miss out on anything and keep practicing harder!!</p>
+                    <div>
+                      <a data-bs-toggle="modal" data-bs-target="#enrollModal" class="btn-get-started scrollto">Enroll Now</a>
+                    </div>
+                  {% comment %} <div class="row">
+                      <div class="col-md-6">
+                          <div class="card course-card">
+                              <div class="card-header course-card-header">
+                                  <h4>What will you learn in this Course?</h4>
+                              </div>
+                              <div class="card-body">
+                                  <ul style="padding-left:1em; margin-left:1em;">
+                                  <li><i class="bi bi-arrow-right"></i>Basics of Java Language</li>
+                                  <li><i class="bi bi-arrow-right"></i>Complete Data Structures & Algorithms</li>
+                                  <li><i class="bi bi-arrow-right"></i>Complete Guidance on Resume Preparation</li>
+                                  <li><i class="bi bi-arrow-right"></i>Complete Mentorship Sessions on Interview Preparation</li>
+                                  <li><i class="bi bi-arrow-right"></i>100's of Coding Questions on All Important Topics</li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="card course-card">
+                              <div class="card-header course-card-header">
+                                  <h4>What will you get after completing this Course?</h4>
+                              </div>
+                              <div class="card-body">
+                                  <ul style="padding-left:1em; margin-left:1em;">
+                                  <li><i class="bi bi-arrow-right"></i>Certification of Completion</li>
+                                  <li><i class="bi bi-arrow-right"></i>Letter Of Recommendation</li>
+                                  <li><i class="bi bi-arrow-right"></i>Complete Placement Assistance</li>
+                                  <li><i class="bi bi-arrow-right"></i>Live Project Internship in PNT Robotics and Solution</li>
+                                  {% comment %} <li><i class="bi bi-arrow-right"></i>100's of Coding Questions on All Important Topics</li> 
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div> {% endcomment %}
+                  {% comment %} <br>
+                  <div>
+                      <a data-bs-toggle="modal" data-bs-target="#syllabusModal" class="btn-get-started scrollto">Syllabus</a>
+                  </div> {% endcomment %}
+                  
+                  {% comment %} <h3>BuildMyProjects is an educational startup that was founded in 2015. We provide courses on robotics to school kids.
+                    We have successfully conducted various workshops on robotics, Python, and latest technologies. </h3>
+                  <p>The company is a result of the passion for knowledge and learning. It was started in 2015 with an aim to provide online courses on Robotics and other technologies to school & college students .</p>
+                  <p>In 2016, we launched CodeSchool Series for School and College students. This series is designed to enhance the knowledge of latest technologies related to robotics to School kids and provide free mentorships on placement guidance to college students.
+    
+                    We are proud to announce our recent launch of CodeSchool Series 2, which has been designed specifically for college students and provides them with real-world experience through practical assignments that includes coding challenges and projects.</p> {% endcomment %}
+                  <!-- <ul>
+                    <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo</li>
+                    <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                    <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                  </ul> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card course-card">
+                <div class="card-header course-card-header">
+                    <h3><b>Syllabus</b></h3>
+                </div>
+                <div class="card-body">
+                  <div class="accordion accordion-flush" id="accordionFlush3">
+                    <div class="accordion-item">
+                        <button class="collapsible" type="button" style="font-size: large;">
+                          <b>Week 1 and 2</b>
+                        </button>
+                      <div id="flush-collapse1" class="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#accordionFlush3">
+                        <div class="accordion-body">
+                          <ul style="font-size: large;">
+                            <li>Flowcharts</li>
+                            <li>Variables and Data Types in Java</li>
+                            <li>Operators</li>
+                            <li>if-else Statements</li>
+                            <li>Flow Control (Loops)</li>
+                            <li>Patterns</li>
+                            <li>Functions and Methods</li>
+                            <li>Arrays</li>
+                            <li>Sorting Algorithms</li>
+                            <li>2D Arrays</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="collapsible" type="button" style="font-size: large;">
+                          <b>Week 3 and 4</b>
+                        </button>
+                      <div id="flush-collapse2" class="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlush3">
+                        <div class="accordion-body">
+                          <ul style="font-size: large;">
+                            <li>Strings</li>
+                            <li>Bit Manipulation</li>
+                            <li>OOPs</li>
+                            <li>Recursion</li>
+                            <li>Divide and Conquer</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="collapsible" type="button" style="font-size: large;">
+                          <b>Month 2</b>
+                        </button>
+                      <div id="flush-collapse3" class="accordion-collapse collapse" aria-labelledby="flush-heading3" data-bs-parent="#accordionFlush3">
+                        <div class="accordion-body">
+                          <ul style="font-size: large;">
+                            <li>Backtracking</li>
+                            <li>Time and Space Complexity</li>
+                            <li>ArrayLists</li>
+                            <li>Linked Lists</li>
+                            <li>Stacks</li>
+                            <li>Queues</li>
+                            <li>Greedy Algorithms</li>
+                            <li>Binary Trees</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="collapsible" type="button" style="font-size: large;">
+                          <b>Month 3</b>
+                        </button>
+                      <div id="flush-collapse4" class="accordion-collapse collapse" aria-labelledby="flush-heading4" data-bs-parent="#accordionFlush3">
+                        <div class="accordion-body">
+                          <ul style="font-size: large;">
+                            <li>Binary Search Trees</li>
+                            <li>Heaps/Priority Queues</li>
+                            <li>Hashing</li>
+                            <li>Tries</li>
+                            <li>Graphs</li>
+                            <li>Dynamic Programming</li>
+                            <li>Segment Trees</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card course-card">
+                <div class="card-header course-card-header">
+                    <h3><b>What will you get after completing this Course?</b></h3>
+                </div>
+                <div class="card-body">
+                    <ul style="padding-left:1em; margin-left:1em; list-style-type:none; font-size:large;">
+                    <li><b><i class="bi bi-arrow-right"></i>Certification of Completion</b></li>
+                    <li><b><i class="bi bi-arrow-right"></i>Letter Of Recommendation</b></li>
+                    <li><b><i class="bi bi-arrow-right"></i>Complete Placement Assistance</b></li>
+                    <li><b><i class="bi bi-arrow-right"></i>Live Project Internship in PNT Robotics and Solution</b></li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section><!-- End python dev Section -->
+
+      <!-- Call To Action Section -->
+      <section id="call-to-action-school" class="call-to-action">
+        <div class="container" data-aos="zoom-out">
+          <div class="row">
+            <div class="text-center text-lg-start">
+              <h3 class="cta-title">School Curriculum</h3>
+              <p class="cta-text"> 
+                After Covid-19, many new jobs are being created and a significant number of existing jobs are 
+                also being re-defined Coding is a game-changer and the ones who are skilled in coding have a
+                competitive advantage in career. It is now an essential ability as well as an added advantage 
+                for many job profiles, and not just software-related jobs. Our goal is to help students enhance their skills and become 
+                aware of new technologies.
+              </p>
+            </div>
+          </div>
+  
+        </div>
+    </section><!--  End Call To Action Section -->
+
+    <!-- ======= proposal Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class=" col-md-3">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              {% comment %} <img src="{% static 'assets/img/school/proposal1.png' %}" alt=""> {% endcomment %}
+              <img src="{% static 'assets/img/school/proposal2.png' %}" alt="">
+            </div>
+          </div>
+
+          <div class=" col-md-3">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+              <h2>PROPOSAL</h2>
+              <ul style="padding-left:1em; margin-left:1em;">
+                <li><i class="bi bi-pin-angle"></i>1 year coding program with many assessments</li>
+                <li><i class="bi bi-pin-angle"></i>Guest speakers from renowned industries like ISRO</li>
+                <li><i class="bi bi-pin-angle"></i>Introducing students to fundamentals of computer science</li>
+                <li><i class="bi bi-pin-angle"></i>Curriculum is designed to meet California's Next Generation Science Standards</li>
+                {% comment %} <li><i class="bi bi-check-circle"></i>2 Exams</li>
+                <li><i class="bi bi-check-circle"></i>1 Expert session with ISRO</li> {% endcomment %}
+              </ul>
+              {% comment %} <h3>PNT Academy is an educational startup that was founded in 2015. We provide courses on robotics to school kids.
+                We have successfully conducted various workshops on robotics, Python, and latest technologies. </h3>
+              <p>The company is a result of the passion for knowledge and learning. It was started in 2015 with an aim to provide online courses on Robotics and other technologies to school & college students .</p>
+              <p>In 2016, we launched CodeSchool Series for School and College students. This series is designed to enhance the knowledge of latest technologies related to robotics to School kids and provide free mentorships on placement guidance to college students.
+
+                We are proud to announce our recent launch of CodeSchool Series 2, which has been designed specifically for college students and provides them with real-world experience through practical assignments that includes coding challenges and projects.</p> {% endcomment %}
+              <!-- <ul>
+                <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo</li>
+                <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              </ul> -->
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="{% static 'assets/img/school/timeline.png' %}" alt="">
+              {% comment %} <img src="{% static 'assets/img/bmpslider7.jpeg' %}" alt=""> {% endcomment %}
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+              <h2>TIMELINE</h2>
+              <ul style="padding-left:1em; margin-left:1em;">
+                <li><i class="bi bi-check-circle"></i>1 class per week</li>
+                <li><i class="bi bi-check-circle"></i>42 Academic Weeks</li>
+                <li><i class="bi bi-check-circle"></i>31 Lectures</li>
+                <li><i class="bi bi-check-circle"></i>2 Assessments</li>
+                <li><i class="bi bi-check-circle"></i>2 Exams</li>
+                <li><i class="bi bi-check-circle"></i>1 Expert session with ISRO</li>
+              </ul>
+              {% comment %} <h3>PNT Academy is an educational startup that was founded in 2015. We provide courses on robotics to school kids.
+                We have successfully conducted various workshops on robotics, Python, and latest technologies. </h3>
+              <p>The company is a result of the passion for knowledge and learning. It was started in 2015 with an aim to provide online courses on Robotics and other technologies to school & college students .</p>
+              <p>In 2016, we launched CodeSchool Series for School and College students. This series is designed to enhance the knowledge of latest technologies related to robotics to School kids and provide free mentorships on placement guidance to college students.
+
+                We are proud to announce our recent launch of CodeSchool Series 2, which has been designed specifically for college students and provides them with real-world experience through practical assignments that includes coding challenges and projects.</p> {% endcomment %}
+              <!-- <ul>
+                <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo</li>
+                <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              </ul> -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- End proposal Section -->
+
+    <!-- ======= TIMELINE Section ======= -->
+    {% comment %} <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-5 col-md-6">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="{% static 'assets/img/school/timeline.png' %}" alt="">
+              <img src="{% static 'assets/img/bmpslider7.jpeg' %}" alt=""> 
+            </div>
+          </div>
+
+          <div class="col-lg-7 col-md-6">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+              <h2>TIMELINE</h2>
+              <ul style="padding-left:1em; margin-left:1em;">
+                <li><i class="bi bi-check-circle"></i>1 class per week</li>
+                <li><i class="bi bi-check-circle"></i>42 Academic Weeks</li>
+                <li><i class="bi bi-check-circle"></i>31 Lectures</li>
+                <li><i class="bi bi-check-circle"></i>2 Assessments</li>
+                <li><i class="bi bi-check-circle"></i>2 Exams</li>
+                <li><i class="bi bi-check-circle"></i>1 Expert session with ISRO</li>
+              </ul>
+              {% comment %} <h3>PNT Academy is an educational startup that was founded in 2015. We provide courses on robotics to school kids.
+                We have successfully conducted various workshops on robotics, Python, and latest technologies. </h3>
+              <p>The company is a result of the passion for knowledge and learning. It was started in 2015 with an aim to provide online courses on Robotics and other technologies to school & college students .</p>
+              <p>In 2016, we launched CodeSchool Series for School and College students. This series is designed to enhance the knowledge of latest technologies related to robotics to School kids and provide free mentorships on placement guidance to college students.
+
+                We are proud to announce our recent launch of CodeSchool Series 2, which has been designed specifically for college students and provides them with real-world experience through practical assignments that includes coding challenges and projects.</p> 
+              <!-- <ul>
+                <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo</li>
+                <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              </ul> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- End TIMELINE Section --> {% endcomment %}
+
+    <!-- ======= school Section ======= -->
+    <section class="mt-4 container" id="school">
+      <div class="container-fluid" data-aos="fade-out">
+          <div class="section-title text-center">
+            <h2 class=" mb-lg-5  pb-3 pb-lg-0 pt-lg-3 pt-0">Choose your Grade</h2>
+            <ul class="nav nav-pills nav-justified" role="tablist" id="myTab">
+              <li class="nav-item waves-effect waves-light" role="presentation">
+                  <a class="nav-link active" data-bs-toggle="tab" href="#grade1-2" role="tab" aria-selected="true">
+                      <span class="d-none d-sm-block">Grade 1-2</span> 
+                  </a>
+              </li>
+              <li class="nav-item waves-effect waves-light" role="presentation">
+                  <a class="nav-link" data-bs-toggle="tab" href="#grade3-4" role="tab" aria-selected="false" tabindex="-1">
+                      <span class="d-none d-sm-block">Grade 3-4</span> 
+                  </a>
+              </li>
+              <li class="nav-item waves-effect waves-light" role="presentation">
+                  <a class="nav-link" data-bs-toggle="tab" href="#grade5-6" role="tab" aria-selected="false" tabindex="-1">
+                      <span class="d-none d-sm-block">Grade 5-6</span>   
+                  </a>
+              </li>
+              <li class="nav-item waves-effect waves-light" role="presentation">
+                  <a class="nav-link" data-bs-toggle="tab" href="#grade7-8" role="tab" aria-selected="false" tabindex="-1">
+                      <span class="d-none d-sm-block">Grade 7-8</span>    
+                  </a>
+              </li>
+              <li class="nav-item waves-effect waves-light" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#grade9-10" role="tab" aria-selected="false" tabindex="-1">
+                    <span class="d-none d-sm-block">Grade 9-10</span>    
+                </a>
+            </li>
+            <li class="nav-item waves-effect waves-light" role="presentation">
+              <a class="nav-link" data-bs-toggle="tab" href="#grade11-12" role="tab" aria-selected="false" tabindex="-1">
+                  <span class="d-none d-sm-block">Grade 11-12</span>    
+              </a>
+          </li>
+            </ul>
+            <br>
+          </div>
+          
+        <div class="tab-content">
+          <!-- ======= Grade 1-2 ======= -->
+          <div class="why-choose tab-pane active show" id="grade1-2" role="tabpanel" style="background-color:#151f2a">
+              <div class="row">
+                <div class="text-center">
+                  <h3>GRADE 1-2 - ROBOTICS JUNIOR</h3>
+                </div>
+                  <div class="col-md-6 p-0 why-choose-card">
+                      <div class="d-flex hoverMe">
+                          <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                              <div class="img-skill-second">
+                                  <img src="{% static 'assets/img/school/img1.png' %}" loading="lazy" width="120" alt="">
+                              </div>
+                          </div>
+                          <div class="pt-lg-3 pt-0">
+                              <h4 class="text-light">Electronic Swing</h4>
+                              <span class="text-light">Get continuous support though our digital eco system.</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6 p-0 why-choose-card">
+                      <div class="d-flex hoverMe">
+                          <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                              <div class="img-skill-second">
+                                  <img src="{% static 'assets/img/school/img2.png' %}" loading="lazy" width="120" alt="">
+                              </div>
+                          </div>
+                          <div class="pt-lg-3 pt-0">
+                              <h4 class="text-light">Walking Robo</h4>
+                              <span class="text-light">Our courses are designed as per the demand of industry.</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6 p-0 why-choose-card">
+                      <div class="d-flex hoverMe">
+                          <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                              <div class="img-skill-second">
+                                  <img src="{% static 'assets/img/school/img3.png' %}" loading="lazy" width="120" alt="">
+                              </div>
+                          </div>
+                          <div class="pt-lg-3 pt-0">
+                              <h4 class="text-light">Takeaway Kits</h4>
+                              <span class="text-light">Our courses are designed in consultation with Engineers from top notch industry.</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- ======= Grade 3-4 ======= -->
+          <div class="why-choose tab-pane" id="grade3-4" role="tabpanel" style="background-color:#151f2a">
+            <div class="row">
+              <div class="text-center">
+                <h3>GRADE 3-4 - WEB ALPHA</h3>
+              </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/doubt-support-session.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">QR Code Generator</h4>
+                            <span class="text-light">Get continuous support though our digital eco system.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/placement-assitence.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Dice Rolling Game</h4>
+                            <span class="text-light">Our courses are designed as per the demand of industry.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/industry-expert.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Personal Portfolio Page</h4>
+                            <span class="text-light">Our courses are designed in consultation with Engineers from top notch industry.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/project-based-learning.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">HTML, CSS</h4>
+                            <span class="text-light">Work on projects, publish to your profile and get hired in your dream company</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- ======= Grade 5-6 ======= -->
+          <div class="why-choose tab-pane" id="grade5-6" role="tabpanel" style="background-color:#151f2a">
+            <div class="row">
+              <div class="text-center">
+                <h3>GRADE 5-6 - ROBO PHANTOMS</h3>
+              </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/doubt-support-session.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Traffic Light Signal</h4>
+                            <span class="text-light">Get continuous support though our digital eco system.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/placement-assitence.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Amazon Warehouse Robot</h4>
+                            <span class="text-light">Our courses are designed as per the demand of industry.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/industry-expert.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Mini Humanoid Robot</h4>
+                            <span class="text-light">Our courses are designed in consultation with Engineers from top notch industry.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/project-based-learning.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Takeaway Kits</h4>
+                            <span class="text-light">Work on projects, publish to your profile and get hired in your dream company</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- ======= Grade 7-8 ======= -->
+          <div class="why-choose tab-pane" id="grade7-8" role="tabpanel" style="background-color:#151f2a">
+            <div class="row">
+              <div class="text-center">
+                <h3>GRADE 7-8 - BIT CODERS</h3>
+              </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/doubt-support-session.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Python Basics</h4>
+                            <span class="text-light">Get continuous support though our digital eco system.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/placement-assitence.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">File Explorer</h4>
+                            <span class="text-light">Our courses are designed as per the demand of industry.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/industry-expert.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Expense Tracker</h4>
+                            <span class="text-light">Our courses are designed in consultation with Engineers from top notch industry.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/project-based-learning.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Searching Algorithms</h4>
+                            <span class="text-light">Work on projects, publish to your profile and get hired in your dream company</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/i-prime-inner-circle.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Prolog: The First Programming Language for AI
+                              </h4>
+                            <span class="text-light">Connect and interact with like Minded people in our committee.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- ======= Grade 9-10 ======= -->
+          <div class="why-choose tab-pane" id="grade9-10" role="tabpanel" style="background-color:#151f2a">
+            <div class="row">
+              <div class="text-center">
+                <h3>GRADE 9-10 - ARTIFICIAL MINDS</h3>
+              </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/doubt-support-session.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Gender and Age Detection</h4>
+                            <span class="text-light">Get continuous support though our digital eco system.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/placement-assitence.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Face Mask Detection</h4>
+                            <span class="text-light">Our courses are designed as per the demand of industry.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/industry-expert.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Chatbot</h4>
+                            <span class="text-light">Our courses are designed in consultation with Engineers from top notch industry.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- ======= Grade 11-12 ======= -->
+          <div class="why-choose tab-pane" id="grade11-12" role="tabpanel" style="background-color:#151f2a">
+            <div class="row">
+              <div class="text-center">
+                <h3>GRADE 11-12 - MAVERICK ML</h3>
+              </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/doubt-support-session.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Wallmart Forecasting</h4>
+                            <span class="text-light">Get continuous support though our digital eco system.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/placement-assitence.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Iris Classification (3D PLOT)</h4>
+                            <span class="text-light">Our courses are designed as per the demand of industry.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/industry-expert.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Diabetes Prediction</h4>
+                            <span class="text-light">Our courses are designed in consultation with Engineers from top notch industry.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 why-choose-card">
+                    <div class="d-flex hoverMe">
+                        <div class="img-skill" style="object-fit: cover;background-color: rgb(0, 0, 0, .1); border-radius: 0.9rem; padding: .75rem;">
+                            <div class="img-skill-second">
+                                <img src="{% static 'assets/img/project-based-learning.png' %}" loading="lazy" width="120" alt="">
+                            </div>
+                        </div>
+                        <div class="pt-lg-3 pt-0">
+                            <h4 class="text-light">Cancer Prediction</h4>
+                            <span class="text-light">Work on projects, publish to your profile and get hired in your dream company</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Why Us Section -->
   
 
     <!-- ======= Footer ======= -->
@@ -467,12 +1522,48 @@
   
     <!-- Template Main JS File -->
     <script src="{% static 'assets/js/main.js' %}"></script>
-  
+
+    <script>
+      var coll = document.getElementsByClassName("accordion-button");
+      var i;
+
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+    </script>
+
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+    </script>
+    
     <script>
       function submit() {
         console.log("submitted");
       }
     </script>
+
+    
 
 </body>
 
